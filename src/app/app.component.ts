@@ -13,7 +13,7 @@ export class AppComponent {
   }
   form: FormGroup = new FormGroup({
     fullname: new FormControl(''),
-    username: new FormControl(''),
+    phoneNumber: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
@@ -27,12 +27,14 @@ export class AppComponent {
     this.form = this.formBuilder.group(
       {
         fullname: ['', Validators.required],
-        username: [
+        phoneNumber: [
           '',
           [
             
             Validators.minLength(6),
-            Validators.maxLength(20)
+            Validators.maxLength(20),
+            Validators.pattern('[- +()0-9]{10,12}')
+
           ]
         ],
         email: ['', [Validators.required, Validators.email]],
